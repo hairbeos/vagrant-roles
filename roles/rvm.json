@@ -1,0 +1,38 @@
+{
+    "name": "rvm",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "The role that used to install RVM, Ruby, Rails servers",
+    "override_attributes": {
+        "rvm": {
+            "rubies": ["2.0.0-p353"],
+            "default_ruby": "2.0.0-p353",
+            "gems": {
+                "ruby-2.0.0-p353": [
+                    { "name": "sass", "version": "3.2.13" },
+                    { "name": "compass" },
+                    { "name": "rails" },
+                    { "name": "passenger", "version": "4.0.37" }
+                ]
+            },
+
+            "global_gems": [
+                { "name": "bundler" },
+                { "name": "rake" }
+            ],
+            
+            "vagrant": { 
+                "system_chef_client": "/opt/chef/bin/chef-client",
+                "system_chef_solo": "/opt/chef/bin/chef-solo"
+            },
+
+            "group_users": ["vagrant"]
+        }
+    },
+
+    "run_list": [
+        "recipe[rvm::system]",
+        "recipe[rvm::vagrant]",
+        "recipe[rvm::gem_package]"
+    ]
+}

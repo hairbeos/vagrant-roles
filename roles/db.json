@@ -1,0 +1,11 @@
+{
+    "name": "db",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "The role for DB servers",
+    
+    "run_list": [
+        "role[core]",
+        "role[db_postgresql]"
+    ]
+}

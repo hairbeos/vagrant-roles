@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+# Core server cookbooks
+cookbook 'locale',
+  git: 'https://github.com/hw-cookbooks/locale'
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'git', 
+  git: 'https://github.com/fnichol/chef-git.git'
+cookbook 'user'
+
+# App server cookbooks
+cookbook 'rvm',
+  :git => 'https://github.com/fnichol/chef-rvm'
+
+# DB server cookbooks
+cookbook 'postgresql'
+
+# Web and App server cookbooks
+cookbook 'nginx'

@@ -1,0 +1,38 @@
+{
+    "name": "db_postgresql",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "The role that used to install PostgreSql to DB servers",
+    "override_attributes": {
+    	"postgresql": {
+	        "version": "9.3",
+	        "initdb_locale": "en_US.UTF-8",
+	        "config": {
+	          	// "ssl_cert_file": "/etc/ssl/certs/ssl-cert-snakeoil.pem",
+	          	// "ssl_key_file": "/etc/ssl/private/ssl-cert-snakeoil.key"
+	        },
+	        "password": {
+	          	"postgres": "postgres"
+	        },
+	        "pg_hba": [
+	          	{ "type": "local", "db": "all", "user": "postgres", "method": "trust" }
+	        ]
+
+	        // "enable_pgdg_yum": true,
+	        // "server": {
+	        // 	"packages": ["postgresql93-server"]
+	        // },
+	        // "client": {
+	        // 	"packages": ["postgresql93", "postgresql93-devel"]
+	        // },
+	        // "contrib": {
+	        // 	"packages": ["postgresql93-contrib"]
+	        // }
+	    }
+    },
+
+    "run_list": [
+    	"recipe[postgresql::server]",
+    	"recipe[postgresql::contrib]"
+    ]
+}

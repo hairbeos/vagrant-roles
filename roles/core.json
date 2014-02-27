@@ -1,0 +1,17 @@
+{
+    "name": "base",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "The base role for all servers",
+    "override_attributes": {
+        "users": ["deploy"]
+    },
+    "run_list": [
+        "recipe[locale]",
+        "recipe[apt]",
+        "recipe[build-essential]",
+        "recipe[git]",
+        "recipe[user]",
+        "recipe[user::data_bag]"
+    ]
+}
