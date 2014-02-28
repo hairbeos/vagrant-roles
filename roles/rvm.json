@@ -5,34 +5,35 @@
     "description": "The role that used to install RVM, Ruby, Rails servers",
     "override_attributes": {
         "rvm": {
-            "rubies": ["2.0.0-p353"],
+            // "rubies": ["2.0.0-p353"],
             "default_ruby": "2.0.0-p353",
+            // "installer_url": "https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer",
             "gems": {
                 "ruby-2.0.0-p353": [
                     { "name": "sass", "version": "3.2.13" },
                     { "name": "compass" },
-                    { "name": "rails" },
-                    { "name": "passenger", "version": "4.0.37" }
+                    { "name": "rake" },
+                    { "name": "bundler" },
+                    { "name": "passenger", "version": "4.0.37" },
+                    { "name": "rails" }
                 ]
             },
-
-            "global_gems": [
-                { "name": "bundler" },
-                { "name": "rake" }
-            ],
-            
             "vagrant": { 
-                "system_chef_client": "/opt/chef/bin/chef-client",
-                "system_chef_solo": "/opt/chef/bin/chef-solo"
+                "system_chef_client": "/opt/vagrant_ruby/bin/chef-client",
+                "system_chef_solo": "/opt/vagrant_ruby/bin/chef-solo"
             },
 
-            "group_users": ["vagrant"]
+            // "group_users": ["vagrant"],
+
+            "gem_package": {
+                "rvm_string": "system"
+            }
         }
     },
 
     "run_list": [
-        "recipe[rvm::system]",
         "recipe[rvm::vagrant]",
+        "recipe[rvm::system]",
         "recipe[rvm::gem_package]"
     ]
 }

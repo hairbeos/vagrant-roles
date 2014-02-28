@@ -1,0 +1,14 @@
+{
+    "name": "nginx_passenger",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "Using the Nginx web server",
+    
+    "override_attributes": {
+    	"passenger": { "nginx_prefix": "/opt/nginx" }
+    },
+
+    "run_list": [
+       "recipe[passenger_nginx]"
+    ]
+}
