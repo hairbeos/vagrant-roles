@@ -14,7 +14,7 @@
                     { "name": "compass" },
                     { "name": "rake" },
                     { "name": "bundler" },
-                    { "name": "passenger", "version": "4.0.37" },
+                    // { "name": "passenger", "version": "4.0.37" },
                     { "name": "rails" }
                 ]
             },
