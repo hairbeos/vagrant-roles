@@ -11,7 +11,7 @@
 		    "log_dir": "/var/log/nginx",
 		    "binary": "/etc/nginx-1.4.4/sbin",
 		    "user": "deploy",
-		    "init_style": "init",
+		    "init_style": "bluepill",
 		    "default_site_enabled": true,
 		    
 		    "source": {
@@ -24,20 +24,9 @@
 			 	"default_configure_flags": [
 			      	"--add-module=/usr/local/rvm/gems/ruby-2.0.0-p353/gems/passenger-4.0.37/ext/nginx"
 			    ],
+			    
 		    	"use_existing_user": true    	
 		    },
-		    
-		    // "gzip_types": [
-		    // 	"text/plain",
-		    //   	"text/html",
-		    //   	"text/css",
-		    //   	"text/xml",
-		    //   	"text/javascript",
-		    //   	"application/json",
-		    //   	"application/x-javascript",
-		    //   	"application/xml",
-		    //   	"application/xml+rss"
-		    // ]
 
 		    "passenger": {
 		      	"version": "4.0.37",
@@ -49,7 +38,7 @@
     },
 
     "run_list": [
-    	"recipe[nginx::passenger]",
+    	// "recipe[nginx::passenger]",
        	"recipe[nginx::source]"
     ]
 }

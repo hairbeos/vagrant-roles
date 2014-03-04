@@ -5,10 +5,11 @@
     "description": "Using the Nginx web server",
     
     "override_attributes": {
-    	"passenger": { "nginx_prefix": "/opt/nginx" }
+    	"ruby": "/usr/local/rvm/rubies/ruby-2.0.0-p353/bin/ruby",
+        "auto_upgrade": false
     },
 
     "run_list": [
-       "recipe[passenger_nginx]"
+       "recipe[passenger_nginx::default]"
     ]
 }

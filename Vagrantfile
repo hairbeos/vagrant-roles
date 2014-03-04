@@ -21,7 +21,7 @@ boxes = [
     roles: ['app'], 
     ip: '192.168.3.3', 
     vbox_config: [
-      { '--memory' => '512' }
+      { '--memory' => '1536' }
     ]
   },
   { 
@@ -45,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.omnibus.chef_version = '11.10.4'
 
       config.vm.network :private_network, ip: opts[:ip]
+      config.vm.network :forwarded_port, guest: 80, host: 8080
       
       # Synced folders
       opts[:synced_folders].each do |hash|

@@ -20,4 +20,4 @@ cookbook 'rvm',
 cookbook 'postgresql'
 
 # Web and App server cookbooks
-cookbook 'nginx', '2.3.0'
+cookbook 'nginx', '2.4.2'

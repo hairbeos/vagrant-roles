@@ -23,7 +23,7 @@
                 "system_chef_solo": "/opt/vagrant_ruby/bin/chef-solo"
             },
 
-            // "group_users": ["vagrant"],
+            "group_users": ["vagrant", "deploy"],
 
             "gem_package": {
                 "rvm_string": "system"
