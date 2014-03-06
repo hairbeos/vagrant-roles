@@ -7,6 +7,7 @@
     "run_list": [
         "role[core]",
         "role[rvm]",
-        "role[nginx]"
+        "role[db_postgresql]",
+        "role[nginx_unicorn]"
     ]
 }

@@ -21,7 +21,7 @@ boxes = [
     roles: ['app'], 
     ip: '192.168.3.3', 
     vbox_config: [
-      { '--memory' => '1536' }
+      { '--memory' => '1024' }
     ]
   },
   { 
@@ -39,14 +39,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'precise64'
   config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
 
+  # vagrant-omnibus
+  if Vagrant.has_plugin?('vagrant-omnibus')
+    config.omnibus.chef_version = '11.10.4'
+  end
+
+  if Vagrant.has_plugin?('vagrant-cachier')
+    config.cache.scope = :machine
+
+    if Vagrant.has_plugin?('vagrant-omnibus')
+      ENV['OMNIBUS_INSTALL_URL']="https://gist.github.com/hectcastro/6443633/raw/install.sh"
+    end
+  end
+
   boxes.each do |opts|
     config.vm.define opts[:name] do |config|
-      # vagrant-omnibus
-      config.omnibus.chef_version = '11.10.4'
-
+      # network config
       config.vm.network :private_network, ip: opts[:ip]
       config.vm.network :forwarded_port, guest: 80, host: 8080
-      
+      config.vm.network :forwarded_port, guest: 8080, host: 9000
       # Synced folders
       opts[:synced_folders].each do |hash|
         hash.each do |folder1, folder2|
@@ -82,6 +93,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         opts[:roles].each do |role|
           chef.add_role(role)   
         end if opts[:roles].kind_of?(Array)
+
+        # chef.log_level = :debug
       end
     end 
   end

@@ -25,6 +25,7 @@ SITE
       build-essential (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
+    sudo (2.5.2)
     user (0.3.0)
     yum (3.1.2)
     yum-epel (0.3.4)
@@ -61,5 +62,6 @@ DEPENDENCIES
   nginx (= 2.4.2)
   postgresql (>= 0)
   rvm (>= 0)
+  sudo (>= 0)
   user (>= 0)
 

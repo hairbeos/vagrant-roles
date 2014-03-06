@@ -3,11 +3,18 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "description": "The base role for all servers",
-    "override_attributes": {
+    "default_attributes": {
+        "authorization": {
+          "sudo": {
+            "users": ["deploy", "vagrant"],
+            "passwordless": true
+          }
+        },
         "users": ["deploy"]
     },
     "run_list": [
         "recipe[locale]",
+        "recipe[sudo]",
         "recipe[apt]",
         "recipe[build-essential]",
         "recipe[git]",

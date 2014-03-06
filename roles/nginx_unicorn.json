@@ -4,22 +4,26 @@
     "json_class": "Chef::Role",
     "description": "Using the Nginx web server",
     
-    "override_attributes": {
+    "default_attributes": {
     	"nginx": {
 		    "version": "1.4.4",
-		    "dir": "/etc/nginx",
-		    "binary": "/etc/nginx-1.4.4/sbin",
-		    "user": "deploy",
-		    "modules": [
-		      	"http_stub_status_module",
-	            "http_ssl_module",
-	            "http_gzip_static_module"
-            ]
+		    // "dir": "/etc/nginx",
+		    // "binary": "/etc/nginx-1.4.4/sbin",
+		    "user": "deploy"
+      //       "init_style": "runit",
+		    // "source": {
+      //           "modules": [
+      //               "nginx::http_stub_status_module",
+      //               "nginx::http_ssl_module",
+      //               "nginx::http_gzip_static_module"
+      //           ],
+      //           "use_existing_user": true
+      //       }   
 		}
     },
 
     "run_list": [
-    	// "recipe[nginx::passenger]",
+        // "recipe[runit]",
        	"recipe[nginx]"
     ]
 }

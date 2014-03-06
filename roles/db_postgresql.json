@@ -5,7 +5,7 @@
     "description": "The role that used to install PostgreSql to DB servers",
     "override_attributes": {
     	"postgresql": {
-	        "version": "9.3",
+	        "version": "9.1",
 	        "initdb_locale": "en_US.UTF-8",
 	        "config": {
 	          	// "ssl_cert_file": "/etc/ssl/certs/ssl-cert-snakeoil.pem",
