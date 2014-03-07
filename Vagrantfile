@@ -29,15 +29,15 @@ boxes = [
     roles: ['db'], 
     ip: '192.168.3.4', 
     vbox_config: [
-      { '--memory' => '256' }
+      { '--memory' => '384' }
     ]
   }
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # box setting for all vm
-  config.vm.box = 'precise64'
-  config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
+  config.vm.box = 'precise32'
+  config.vm.box_url = 'http://files.vagrantup.com/precise32.box'
 
   # vagrant-omnibus
   if Vagrant.has_plugin?('vagrant-omnibus')
@@ -85,7 +85,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # Configure the box with Chef
       config.vm.provision :chef_solo do |chef|
         # Chef config
-        chef.cookbooks_path = 'cookbooks'
+        chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
         chef.roles_path = 'roles'
         chef.data_bags_path = 'data_bags'
 
